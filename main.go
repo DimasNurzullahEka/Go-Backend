@@ -1,6 +1,7 @@
 package main
 
 func main() {
-	TambahDataPelanggan("banisa tifdla", "banisa@gmail.com")
+	// TambahDataPelanggan("Dimas Nurzullah Eka Nugraha", "dimasn@gmail.com")
+	HapusDataPelanggan("Dimas Nurzullah Eka Nugraha")
 	GetDataCustomer()
 }

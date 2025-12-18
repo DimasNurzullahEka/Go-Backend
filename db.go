@@ -57,3 +57,45 @@ func TambahDataPelanggan(Nama_Customer string, Email string) {
 	fmt.Println("Data berhasil ditambahkan dengan ID  :", lastID)
 
 }
+
+// Hapus data pelanggan versi pertama  ada notifikasi tidak ada nama
+
+// func HapusDataPelanggan(Nama_Customer string) {
+// 	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/payment")
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	defer db.Close()
+// 	query := "DELETE FROM datacustomer WHERE Nama_Customer=?"
+// 	result, err := db.Exec(query, Nama_Customer)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	hapusPelanggan, err := result.RowsAffected()
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	if hapusPelanggan == 0 {
+// 		fmt.Println("Tidak ada nama tersebuut: ", Nama_Customer)
+
+// 	} else {
+// 		fmt.Printf("Berhasil menghapus %d data dengan Nama_Customer : %s\n ", hapusPelanggan, Nama_Customer)
+// 	}
+
+// }
+
+// Delete data  versi kedua
+
+func HapusDataPelanggan(Nama_Customer string) {
+	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/payment")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+	result, err := db.Exec("DELETE FROM datacustomer WHERE Nama_Customer =?", Nama_Customer)
+	if err != nil {
+		log.Fatal(err)
+	}
+	hapuspelanggan, _ := result.RowsAffected()
+	fmt.Printf("Data terhapus: %d (Nama: %s)\n", hapuspelanggan, Nama_Customer)
+}
